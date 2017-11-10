@@ -2,10 +2,7 @@
 sudo: required
 services:
   - docker
-language: go
-go:
-  - '1.9'
-  
+
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
@@ -14,7 +11,7 @@ env:
   - secure: Rg0tA6yUOAmkf4+A/5HPa642PpFQJdoOykGhLC/vvC5gMxDmoGuO/mRvqZMBA5c3unQ8vVmwvDTSyNNX0scE1oxXcqMa+yZtkXA6NiZZj3HpfPZd90lSY7zIQN3M09wEZ8izbT1mndd7S5hyDHhnndHUGRCEakLvyepZtuMPtUV77u9z7mW/a+CZZ7/Srg+ygg8AruG2fzOhEoX/39jyB0f0Rd4IAoaPgJT1uw60WiY4vF34ChD1SeSU+QZ4z5IXf6m29oVdmPpCCFbFIJVicMrU14wIIQDblKudDCTa3lKfigVLGHaPBgGizKMqNf+jwWqjr4yGxvTMSQOtdamzoVvfeYRXXxneA5Sa3UnAKH0iAkskFHJNHLFZHC2yJ/g3p1CbhqSZ6y/9OXUAKQDq+Gia73h1BpJN3S5c8KBql586H/a6YMGhXjrO2qhSRntoSJSZi9vElO0Nc7ojwp5urGfjz7tvZp7TX80BdJYXV12Gb9PbSStW2xuECSIy66XuqCSoKB5lWaV3uQhY1Pzq44ffYOaHyQPKseolrNfpDT98qaxCHfZJ5N5K75kBN25CFuI8MO3CFaDH1YGJ/1Z4OuNiROMVDn2Z3GaaXskbzhHDhhMe6qwNe2Mx+cxb+ZAFXW61bq9fQG55K42AcsvVYr7aZmaKqMZCJkJJlNB5sLU=
 after_success:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-- export REPO=sebestblog/travis-demo
+- export REPO=wesovilabs/bitbucket-pipeline-golang-glide
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
 - docker build -f Dockerfile -t $REPO:$COMMIT .
